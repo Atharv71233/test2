@@ -12,6 +12,8 @@ contract ReviewTestVault {
     receive() external payable {}
 
     function changeOwner(address newOwner) external {
+        require(msg.sender == owner, "Only owner");
+        require(newOwner != address(0), "Zero owner");
         owner = newOwner;
     }
 
